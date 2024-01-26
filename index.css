@@ -24,9 +24,30 @@ button {
     font-weight: bold;
 }
 
+button:hover {
+    background-color: #005e92;
+    /* Change color on hover */
+    cursor: pointer;
+}
+
+button:active {
+    background-color: #003f61;
+}
+
 #delete-btn {
     background-color: white;
     color: #0077b5;
+}
+
+#delete-btn:hover {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+#delete-btn:active {
+    background-color: #005e92;
 }
 
 ul {
