@@ -43,7 +43,7 @@ deleteBtn.addEventListener("dblclick", function(){
   render(myLeads)
 })
 
-inputBtn.addEventListener("click", function () {
+function addLead() {
   // Check if the input value starts with "http://" or "https://"
   let inputValue = inputEl.value
   if (!inputValue.startsWith("http://") && !inputValue.startsWith("https://")) {
@@ -51,12 +51,21 @@ inputBtn.addEventListener("click", function () {
     inputValue = "http://" + inputValue
   }
 
-  myLeads.push(inputValue)
+  myLeads.push(inputValue);
   // Clear input field
   inputEl.value = ""
-  //save myLeads into local storage, by convertion array to string
+  // Save myLeads into local storage, by converting the array to a string
   localStorage.setItem("myLeads", JSON.stringify(myLeads))
   render(myLeads)
-})
+}
+
+inputBtn.addEventListener("click", addLead);
+
+//Enter key can also trigger addLead function
+inputEl.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") { 
+    addLead();
+  }
+});
 
 
