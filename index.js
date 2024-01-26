@@ -1,21 +1,34 @@
-let myLeads = [];
-const inputEl = document.getElementById("input-el");
-const inputBtn = document.getElementById("input-btn");
-const ulEl = document.getElementById("ul-el");
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
 
 inputBtn.addEventListener("click", function () {
-  myLeads.push(inputEl.value);
-  //clear input field
-  inputEl.value = "";
-  renderLeads();
+  // Check if the input value starts with "http://" or "https://"
+  let inputValue = inputEl.value
+  if (!inputValue.startsWith("http://") && !inputValue.startsWith("https://")) {
+    // Add "http://" prefix if missing
+    inputValue = "http://" + inputValue
+  }
+
+  myLeads.push(inputValue)
+  // Clear input field
+  inputEl.value = ""
+  renderLeads()
 });
 
 function renderLeads() {
-  let listItems = "";
-  //add elements to the output list
+  let listItems = ""
+  // Add elements to the output list
   for (let i = 0; i < myLeads.length; i++) {
-    listItems += "<li>" + myLeads[i] + "</li>";
+    listItems += `
+    <li>
+        <a target='_blank' href="${myLeads[i]}">
+            ${myLeads[i]}
+        </a>
+    </li>
+    `
   }
-  //render output
+  // Render output
   ulEl.innerHTML = listItems;
 }
