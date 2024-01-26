@@ -1,6 +1,7 @@
 let myLeads = []
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
+const tabBtn = document.getElementById("tab-btn")
 const deleteBtn = document.getElementById("delete-btn")
 const ulEl = document.getElementById("ul-el")
 //turn leads from string back to array to render
@@ -27,6 +28,14 @@ function render(leads) {
   ulEl.innerHTML = listItems  
 }
 
+tabBtn.addEventListener("click", function(){
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    myLeads.push(tabs[0].url)
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    render(myLeads)
+  })
+})
+
 deleteBtn.addEventListener("dblclick", function(){
   //clear stoage
   localStorage.clear()
@@ -35,14 +44,14 @@ deleteBtn.addEventListener("dblclick", function(){
 })
 
 inputBtn.addEventListener("click", function () {
-  // // Check if the input value starts with "http://" or "https://"
-  // let inputValue = inputEl.value
-  // if (!inputValue.startsWith("http://") && !inputValue.startsWith("https://")) {
-  //   // Add "http://" prefix if missing
-  //   inputValue = "http://" + inputValue
-  // }
+  // Check if the input value starts with "http://" or "https://"
+  let inputValue = inputEl.value
+  if (!inputValue.startsWith("http://") && !inputValue.startsWith("https://")) {
+    // Add "http://" prefix if missing
+    inputValue = "http://" + inputValue
+  }
 
-  myLeads.push(inputEl.value)
+  myLeads.push(inputValue)
   // Clear input field
   inputEl.value = ""
   //save myLeads into local storage, by convertion array to string
