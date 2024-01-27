@@ -14,17 +14,18 @@ if(leadsFromLocalStorage){
 
 function render(leads) {
   let listItems = ""
-  //Add elements to the output list
+  //Add elements to input list
   for (let i = 0; i < leads.length; i++) {
       listItems += `
           <li>
               <a target='_blank' href='${leads[i]}'>
                   ${leads[i]}
               </a>
+              <button data-index="${i}" class="indDel-btn">Delete</button>
           </li>
       `
   }
-  //Render output
+    //Render output
   ulEl.innerHTML = listItems  
 }
 
@@ -42,6 +43,12 @@ deleteBtn.addEventListener("dblclick", function(){
   myLeads = []
   render(myLeads)
 })
+
+function deleteLead(index) {
+  myLeads.splice(index, 1); 
+  localStorage.setItem("myLeads", JSON.stringify(myLeads));
+  render(myLeads);
+}
 
 function addLead() {
   // Check if the input value starts with "http://" or "https://"
@@ -61,11 +68,21 @@ function addLead() {
 
 inputBtn.addEventListener("click", addLead);
 
-//Enter key can also trigger addLead function
+//Enter key can also trigger addLead function 
 inputEl.addEventListener("keydown", function (event) {
   if (event.key === "Enter") { 
     addLead();
   }
 });
+
+//
+ulEl.addEventListener("click", function(event) {
+  // Check if the clicked element has the class 'indDel-btn'
+  if (event.target.classList.contains("indDel-btn")) {
+    const index = event.target.getAttribute("data-index");
+    deleteLead(index);
+  }
+});
+
 
 

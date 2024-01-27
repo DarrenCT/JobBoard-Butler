@@ -47,7 +47,28 @@ button:active {
 }
 
 #delete-btn:active {
-    background-color: #005e92;
+    background-color: #860707;
+}
+
+.indDel-btn {
+    background-color: white;
+    color: #0077b5;
+    padding: 5px 10px;
+    border: 1px solid #0077b5;
+    font-size: 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.indDel-btn:hover {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+
+.indDel-btn:active {
+    background-color: #860707;
 }
 
 ul {
@@ -62,4 +83,6 @@ li {
 
 li a {
     color: #0077b5;
+    margin-right: 10px;
+    vertical-align: middle;
 }
