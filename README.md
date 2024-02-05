@@ -9,13 +9,6 @@ Job Tracker is a Chrome extension designed to streamline the job search process.
 - **Delete Options**: Remove individual job listings or clear your entire list when needed.
 - **User-Friendly Interface**: A simple and intuitive interface for efficient job tracking.
 
-## Installation
-1. Download the `JobTracker.zip` file from the releases.
-2. Unzip the file.
-3. Open Chrome and go to `chrome://extensions/`.
-4. Enable 'Developer mode'.
-5. Click 'Load unpacked' and select the unzipped folder.
-
 ## Usage
 - To save a job posting, simply click on the 'SAVE TAB' button while on the job listing page.
 - Alternativly, you can manually input and save and url using the 'SAVE PAGE' button.
